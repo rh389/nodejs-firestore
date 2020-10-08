@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {DocumentData} from "@google-cloud/firestore";
 import {describe, it, beforeEach, before, afterEach, after} from 'mocha';
 import {expect, use} from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
@@ -973,7 +974,7 @@ describe('getAll() method', () => {
 
     return createInstance(overrides).then(firestore => {
       return firestore
-        .getAll(firestore.doc('collectionId/documentId'))
+        .getAll(firestore.doc<DocumentData>('collectionId/documentId'))
         .then(result => {
           resultEquals(result, found('documentId'));
         });
@@ -1171,7 +1172,7 @@ describe('getAll() method', () => {
     return createInstance(overrides).then(firestore => {
       return firestore
         .getAll(
-          firestore.doc('collectionId/exists'),
+          firestore.doc<DocumentData>('collectionId/exists'),
           firestore.doc('collectionId/missing')
         )
         .then(result => {
@@ -1196,7 +1197,7 @@ describe('getAll() method', () => {
     return createInstance(overrides).then(firestore => {
       return firestore
         .getAll(
-          firestore.doc('collectionId/first'),
+          firestore.doc<DocumentData>('collectionId/first'),
           firestore.doc('collectionId/second'),
           firestore.doc('collectionId/third'),
           firestore.doc('collectionId/fourth')
@@ -1224,7 +1225,7 @@ describe('getAll() method', () => {
     return createInstance(overrides).then(firestore => {
       return firestore
         .getAll(
-          firestore.doc('collectionId/a'),
+          firestore.doc<DocumentData>('collectionId/a'),
           firestore.doc('collectionId/a'),
           firestore.doc('collectionId/b'),
           firestore.doc('collectionId/a')

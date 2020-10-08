@@ -78,7 +78,7 @@ describe('set() method', () => {
   it('works with null objects', () => {
     const nullObject = Object.create(null);
     nullObject.bar = 'ack';
-    writeBatch.set(firestore.doc('sub/doc'), nullObject);
+    writeBatch.set(firestore.doc<DocumentData>('sub/doc'), nullObject);
   });
 
   it('requires the correct converter for Partial usage', async () => {
@@ -201,7 +201,7 @@ describe('create() method', () => {
   it('works with null objects', () => {
     const nullObject = Object.create(null);
     nullObject.bar = 'ack';
-    writeBatch.create(firestore.doc('sub/doc'), nullObject);
+    writeBatch.create(firestore.doc<DocumentData>('sub/doc'), nullObject);
   });
 });
 
