@@ -209,7 +209,7 @@ declare namespace FirebaseFirestore {
      * @param documentPath A slash-separated path to a document.
      * @return The `DocumentReference` instance.
      */
-    doc(documentPath: string): DocumentReference<DocumentData>;
+    doc<T = DocumentData>(documentPath: string): DocumentReference<T>;
 
     /**
      * Creates and returns a new Query that includes all documents in the
@@ -1380,7 +1380,7 @@ declare namespace FirebaseFirestore {
      * this is the first snapshot, all documents will be in the list as added
      * changes.
      */
-    docChanges(): DocumentChange[];
+    docChanges(): DocumentChange<T>[];
 
     /**
      * Enumerates all of the documents in the QuerySnapshot.

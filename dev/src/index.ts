@@ -582,7 +582,7 @@ export class Firestore implements firestore.Firestore {
    * let documentRef = firestore.doc('collection/document');
    * console.log(`Path of document is ${documentRef.path}`);
    */
-  doc(documentPath: string): DocumentReference {
+  doc<T = firestore.DocumentData>(documentPath: string): DocumentReference<T> {
     validateResourcePath('documentPath', documentPath);
 
     const path = ResourcePath.EMPTY.append(documentPath);
